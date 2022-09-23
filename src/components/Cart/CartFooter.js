@@ -1,14 +1,14 @@
 import { number } from 'prop-types';
 import CartTotal from './CartTotal';
+import { useCart } from './CartContext';
 
-const CartFooter = ({ total, ...restProps }) => (
+export default function CartFooter ({ ...restProps }) {
+  const { cart, onUpdate } = useCart();
   <footer {...restProps}>
-    <CartTotal>{total}</CartTotal>
+    <CartTotal>{cart.total}</CartTotal>
   </footer>
-);
+}
 
 CartFooter.propTypes = {
   total: number.isRequired,
 };
-
-export default CartFooter;
